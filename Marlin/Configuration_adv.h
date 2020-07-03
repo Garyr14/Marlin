@@ -658,7 +658,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  //#define BLTOUCH_DELAY 500
+  #define BLTOUCH_DELAY 200  //Changed by GR 063020 enabled and from 500 to 200
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -1598,7 +1598,7 @@
 #define LIN_ADVANCE  //Changed by GR 062620
 #if ENABLED(LIN_ADVANCE)
   #define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.0    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.04    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
@@ -3172,7 +3172,7 @@
   #define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Home and Lower 10mm"
-  #define USER_GCODE_1 "m211 S1\nG28\nM503\nG1 Z-10 F200\nG4 S10\nG1 Z10 F400\nM84"
+  #define USER_GCODE_1 "m211 S1\nG28\nM503\nG1 Z-10 F200\nG4 S5\nG1 Z10 F400\nM84"
 
     #define USER_DESC_2 "Advance 100mm Filament"
   #define USER_GCODE_2 "M83\nG1 E100 F100\nM84"
