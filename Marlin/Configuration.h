@@ -760,13 +760,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 1600, 415.8}  //Changed by GR 061020
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 1600, 411.9}  //Changed by GR 061020
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
+#define DEFAULT_MAX_FEEDRATE          { 400, 400, 7, 50 } //Changed by GR 063020  from 5 to 7
 
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -809,6 +810,7 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
+//#define CLASSIC_JERK  //Changed by GR 070220 - Enabled
 #if ENABLED(CLASSIC_JERK)
   #define DEFAULT_XJERK 5.0
   #define DEFAULT_YJERK 5.0
@@ -997,6 +999,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
+#define NOZZLE_TO_PROBE_OFFSET { -24, -35, -1.175 } //Changed by GR 062620
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1020,8 +1023,6 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2  //Changed by GR 062620
-#define EXTRA_PROBING    1  //Changed by GR 062620
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1037,6 +1038,9 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
+#define Z_CLEARANCE_DEPLOY_PROBE   5 // Z Clearance for Deploy/Stow  //Changed by GR 063020 from 10 to 5
+#define Z_CLEARANCE_BETWEEN_PROBES  4 // Z Clearance between probe points  //Changed by GR 063020 from 5 to 4
+#define Z_CLEARANCE_MULTI_PROBE     4 // Z Clearance between multiple probes  //Changed by GR 063020 from 5 to 4
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
@@ -1402,6 +1406,7 @@
 
 // Homing speeds (mm/m)
 #define HOMING_FEEDRATE_XY (100*60) //Changed by GR 062620
+#define HOMING_FEEDRATE_Z  (20*60)   //Changed by GR 062620  //Changed by GR 063020 from 4 to 20
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
